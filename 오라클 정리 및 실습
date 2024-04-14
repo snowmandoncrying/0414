@@ -23,8 +23,31 @@
 	쿼리문 - 대입이라는 개념이 없고 추가하는 것임. (연결의 의미를 가짐)
 		      값이 바뀌는 것이 아니다.
 
+--------------------------
+@ 중복 제거 - distinct 명령어 (중복된 것을 다 볼 필요는 없으니까 그럴때 사용)
+
+select distinct 컬럼명 from 테이블명;
+select distinct deptno from emp;
 
 
+select distinct deptno from emp; // 부서번호 중복 제거
+select distinct job from emp;   // 직무 중복 제거
+-------------------------
+@ 정렬 - order by
+
+# 급여 오름차순 정렬[asc] - asc는 생략가능
+select 컬럼 from 테이블 order by 컬럼;
+select * from emp order by sal;
+
+# 급여 내림차순 정렬[desc] - desc는 생략불가능
+select * from emp order by sal desc; // 급여를 내림차순으로 정렬
+select * from emp order by deptno, sal; // 부서별로 정렬한 후 급여별로 정렬하는 것 (상위정렬 - 하위정렬), 부서 내에서 또 급여별로 오름차순
+
+정렬은 sql문에서 가장 마지막에 들어간다. 정렬을 많이 하는 것은 그닥 좋은건 아니다.
+모든 문장에서 항상 마지막에 들어감.
+
+select * from emp where 조건 order by deptno, sal; // 조건에 맞는 것을 정렬하겠다는 뜻
+------------------------------------
 
 
 
