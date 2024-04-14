@@ -1,0 +1,35 @@
+@ 데이터베이스에 저장되는 자료 형태
+  테이블
+  컬럼명 (컬럼)
+  로우
+
+@ 데이터의 구조를 살펴보기 위한 DESC
+  
+  DESC(RIBE) - 테이블명
+  
+  SQL > DESC emp;
+  EMPNO(사원번호), ENAME(사원명), JOB(직급), MGR(해당관리자-상관, 사수), HIREDATE(입사일자), 
+  SAL(급여), COMM(커미션, 보너스), DEPTNO(부서번호)
+
+  SQL > DESC dept;
+  DEPTNO(부서번호), DNAME(부서명), LOC(지역)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
