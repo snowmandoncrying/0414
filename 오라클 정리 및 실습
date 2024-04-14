@@ -96,6 +96,22 @@ select job, lower(substr(job, 3)) from emp;	// 직업을 3글자 잘라낸 것�
 
 select job, replace(job, 'A', '-') from emp;	// A를 다른 문자인 -로 바꾸겠다. A가 -로 바뀜
 
+
+# lpad() - 문자의 왼쪽 빈 공간 채우기 
+# rpad() - 문자의 오른쪽 빈 공간 채우기 
+
+select job, lpad(job, 9) from emp;	// 전체 공간을 9글자 들어갈 수 있게 만들어줌 (임의로 설정한 것)
+					// 왼쪽 정렬 (왼쪽 공백) - 이 공백을 다른 문자로 채워넣을 수 있다
+select job, lpad(job, 9, '-') from emp; // 부족한 공간은 대쉬로 채우겠다.
+
+select job, rpad(job, 9) from emp;	// 오른쪽 공백
+select job, rpad(job, 9, '-') from emp; 	
+
+
+# trim() - 문자의 앞 뒤 공백 지우기 	 '  abcd  ' -> 'abcd'
+
+select job, trim(job) from emp;
+
 ------------------------------------
 실제 개발을 할 때 자바와 데이터베이스 둘다 사용하곤 한다.
 그럼 어디서 하는게 좋을까? > 자바 !!
