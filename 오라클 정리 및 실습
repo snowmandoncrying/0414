@@ -206,7 +206,6 @@ select to_char(sysdate ) from dual;
 select to_char(sysdate, 'YYYY/MM/DD HH:MI:SS') from dual;
 --------------------------
 
-
 @ NULL 처리
 
 select sal, comm, sal+comm from emp;
@@ -219,12 +218,11 @@ select comm, nvl(comm, 0) from emp;
 
 select sal, comm, sal+nvl(comm, 0) from emp;
 
-
 --------------------------
 
 @ where 조건문
 
-select * from emp where sal >= 3000;
+select * from emp where sal >= 3000;	// 급여가 3천달러 이상인 사람의 모든 정보 출력
 select * from emp where sal < 3000;
 select * from emp where sal = 3000;
 
@@ -235,27 +233,27 @@ select * from emp where ename > 'CM';	// 조건에 맞지 않아서 결과가 �
 
 # AND, OR
 
-select * from emp where sal > 2000 and deptno = 10;	// 10번 부서 중에 2000이상 받는 사람
-select * from emp where deptno = 10 or deptno = 20;	// deptno가 10번 이거나 20번 (둘 중에 하나라도 만족)
+select * from emp where sal > 2000 and deptno = 10;	// 10번 부서이면서 급여를 2000달러 이상 받는 사람 (둘 다 만족)
+select * from emp where deptno = 10 or deptno = 20;	// 부서번호가 10번이거나 20번인 사원 (둘 중에 하나라도 만족)
 
 
-# NOT, !=
+# NOT, != (부정형)
 
-select * from emp where not deptno = 10;	// 10번을 제외한 나머지
-select * from emp where deptno != 10;	// 결과는 위와 동일
+select * from emp where not deptno = 10; // 10번 부서번호을 제외
+select * from emp where deptno != 10;	// 위와 결과 동일
 
 # OR, IN()
 
 select * from emp where deptno = 10 or deptno = 20;	// 10번 부서이거나 20번 부서이거나
-select * from emp where deptno in(10, 20, 50);
-select * from emp where deptno not in(10, 20, 50);	// 부정형 
+select * from emp where deptno in(10, 20, 50);	// 부서번호가 10, 20, 50번 중 하나라도 이에 해당하면 됨
+select * from emp where deptno not in(10, 20, 50);	// 부정형 - 부서번호 10번이거나 20번이거나 50번이면 제외 (각각 제외일듯?) 
 
 select * from emp where job not in('MANAGER', 'SALESMAN');	// 업무나 매니저이거나 세일즈맨 이거나
 
 
 # BETWEEN ~ AND
 
-select * from emp where sal >= 1000 and sal <= 2000;
+select * from emp where sal >= 1000 and sal <= 2000;	// 급여가 1000달러 이상 2000달러 이하
 select * from emp where sal between 1000 and 2000;
 
 select * from emp where sal not between 1000 and 2000;
