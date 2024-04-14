@@ -29,6 +29,44 @@ NUMBER(precision, scale)
 sql > VARCHAR(20) - 칸에 딱 맞게
 sql > CHAR(8) - 8칸 중 3칸만 차지하고 나머지는 공백
 
+# 기본적인 SELECT문
+
+- 기본형식
+SELECT [DISTINCT] {*, column[Alias],...}
+FROM 테이블명;
+
+SQL>SELECT*
+  2 FROM emp;
+
+- 특정 데이터만 보기
+SQL> SELECT empno, ename
+  2 FROM emp;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
