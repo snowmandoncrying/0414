@@ -58,9 +58,18 @@ NULL은 0(zero)도 아니고 빈 공간도 아니다.
     100 + ? = ?
     100 + ∞ = ∞ 
 
+# 별칭
+  대문자 소문자를 구분하지만 결과는 대소문자를 구분하지 않고 출력한다.
+  "" 사이에는 공백문자, _(언더바), #(샾) 사용이 가능하며 대소문자가 구분되어 출력된다.
+  한글 사용이 가능하다
+  AS를 사용하여 별칭을 부여하는 경우가 있다.
 
+# Concatenation 연산자의 정의와 사용
+SQL> SELECT ename, 'is a', job 2 FROM emp;
+SQL> SELECT ename ||'is a'|| job 2 FROM emp;
 
-
+# 중복되는 컬럼을 한번씩만 보여주기 위한 DISTINCT 키워드
+SQL> SELECT DISTINCT deptno 2 FROM emp;
 
 
 
