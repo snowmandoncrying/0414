@@ -126,6 +126,87 @@ SQL 하나하나 적용해서 바꿔나가는 방식이기에 데이터가 많�
 자바는 재사용을 하기에 처리속도가 빠르다 (그래서 함수같은 연산식은 여기서 사용)
 ------------------------
 
+@ 숫자 관련 함수
+
+# round() - 반올림 (실수인 경우)
+
+select sal, sal/3 from emp;		// 급여 나누기 3 - 소수점 확인
+select sal, round(sal/3) from emp;
+select sal, round(sal/3, 1) from emp;	// 반올림할 소수점 자리도 지정가능 - 소수점 첫째자리까지 보이게
+select sal, round(sal/3, 2) from emp;	// 소수점 둘째자리까지
+
+# trunc() - 버림
+
+select sal, trunc(sal/3) from emp;
+select sal, trunc(sal/3, 1) from emp;	
+select sal, trunc(sal/3, 2) from emp;
+
+# mod() - 나머지값
+
+select sal, mod(sal, 100) from emp;	// 급여를 100으로 나눴을 때의 나머지 값
+
+---------------------------------
+
+@ 날짜 관련 함수
+
+// 입사 날짜, 입사 날짜 + 1
+select hiredate, hiredate+1 from emp;
+
+# add_momths() : 월 관련 함수
+
+// 입사 날짜부터 3개월 뒤 
+select hiredate, add_months(hiredate, 3) from emp; 
+
+// 입사 날짜부터 3개월 전
+select hiredate, add_months(hiredate, -3) from emp; 
+
+
+# months_between() : 두 날짜간의 개월수 차이
+
+select months_between(sysdate, hiredate) from emp;	// 현재날짜와 입사날짜 개월수 차이
+
+
+# next_day() - 다음 요일 날짜
+
+// 입사일 기준으로 돌아오는 일요일
+select sysdate, next_day(sysdate, '일요일') from dual; 	// dual : 테이블 이름으로 적을 게 없을 때 사용 
+
+// 입사일 기준으로 다음주 일요일 
+select sysdate, next_day(next_day(sysdate, '일요일'), '일요일') from dual; 
+
+
+# last_day() - 마지막 날짜
+
+select sysdate, last_day(sysdate) from dual;	// 현재 날짜부터 이번 달 마지막 날짜까지 며칠 남은건지 알려줌
+
+// 디데이 구할 때 사용
+select sysdate, last_day(sysdate) - sysdate from dual;  // lastday - sysdate > 일수가 나옴
+select sysdate, last_day('2024/05/05') - sysdate from dual;
+select sysdate, last_day('2024-05-05') - sysdate from dual; // 위에가 안 되면 밑으로 하면 됨
+
+----------------------
+
+@ 형변환
+
+# to_char() - 문자 변경
+# to_number() - 숫자 변경
+# to_date() - 날짜 변경
+
+
+## 암묵적 형변환 -- 타입과 형식이 맞는 경우 형변환 없이 자동 형변환된다.
+
+// 문자 100을 숫자 100으로 바꿔줌 - 연산식으로 바꿔줌 (SQL과 자바의 다른 점 - 자바는 100 100 출력)
+select '100' + 100 from dual; 	// 결과값 : 200
+select to_number('100') + 100 from dual; // 위와 동일한 내용
+
+// 날짜를 문자 형식으로 보여줌 (날짜를 문자로 바꾸겠다)
+select to_char(sysdate ) from dual;
+
+// 년월일 시분초 까지
+select to_char(sysdate, 'YYYY/MM/DD HH:MI:SS') from dual;
+--------------------------
+
+
 
 
 
