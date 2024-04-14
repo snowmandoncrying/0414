@@ -42,8 +42,21 @@ SQL>SELECT*
 SQL> SELECT empno, ename
   2 FROM emp;
 
+# 산술연산자
+종류 (+, -, *, /)
 
+예시 > SELECT ename, sal + comm FROM emp;
+      SELECT ename, sal -100 FROM emp;
+      SELECT ename, sal * 12 FROM emp;
+      SELECT ename, sal / 2 FROM emp;
 
+# NULL도 데이터
+NULL은 0(zero)도 아니고 빈 공간도 아니다.
+미확정(해당 사항 없음), 알 수 없는(unknown) 값을 의미한다.
+어떤 값인지 알 수는 없지만 값이 존재하고 있다.
+? 혹은 ∞ (무한대)의 의미이므로 연산과 할당, 비교가 불가능하다.
+    100 + ? = ?
+    100 + ∞ = ∞ 
 
 
 
