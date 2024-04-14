@@ -200,7 +200,7 @@ select '100' + 100 from dual; 	// 결과값 : 200
 select to_number('100') + 100 from dual; // 위와 동일한 내용
 
 // 날짜를 문자 형식으로 보여줌 (날짜를 문자로 바꾸겠다)
-select to_char(sysdate ) from dual;
+select to_char(sysdate) from dual;
 
 // 년월일 시분초 까지
 select to_char(sysdate, 'YYYY/MM/DD HH:MI:SS') from dual;
@@ -248,21 +248,21 @@ select * from emp where deptno = 10 or deptno = 20;	// 10번 부서이거나 20�
 select * from emp where deptno in(10, 20, 50);	// 부서번호가 10, 20, 50번 중 하나라도 이에 해당하면 됨
 select * from emp where deptno not in(10, 20, 50);	// 부정형 - 부서번호 10번이거나 20번이거나 50번이면 제외 (각각 제외일듯?) 
 
-select * from emp where job not in('MANAGER', 'SALESMAN');	// 업무나 매니저이거나 세일즈맨 이거나
+select * from emp where job not in('MANAGER', 'SALESMAN');	// 업무가 매니저이거나 세일즈맨 이거나
 
 
 # BETWEEN ~ AND
 
-select * from emp where sal >= 1000 and sal <= 2000;	// 급여가 1000달러 이상 2000달러 이하
-select * from emp where sal between 1000 and 2000;
+select * from emp where sal >= 1000 and sal <= 2000;	// 급여가 1000달러 이상 2000달러 이하인 사원
+select * from emp where sal between 1000 and 2000;	// 위와 동일
 
-select * from emp where sal not between 1000 and 2000;
+select * from emp where sal not between 1000 and 2000;	// 급여가 1000달러 이상 2000달러 이하가 아닌 사원
 
 
 # IS NULL, IS NOT NULL
 
-select * from emp where comm is null;
-select * from emp where comm is not null;
+select * from emp where comm is null;	// 보너스가 없는 사원
+select * from emp where comm is not null; // 보너스가 있는 사원
 
 
 # LIKE
@@ -297,54 +297,27 @@ select * from emp where ename not like 'S%';
 select count(컬럼명) from 테이블명;
 select count(comm) from emp;
 select count(*) from emp;
-			select comm, count(*) from emp; // 오류
+			select comm, count(*) from emp; // 오류남 이렇게 쓸 수 없음
 
 select count(*) from emp where sal >= 3000;	// 급여가 3천 이상인 사원수
 select count(*) from emp where deptno= 20;	// 20번 부서의 사원수
 
 # sum() - 숫자 컬럼의 총합
 
-select count(*), sum(sal) from emp;	// 같은 그룹함수끼리는 같이 쓸 수 있음
+select count(*), sum(sal) from emp;	// 같은 그룹함수끼리는 같이 쓸 수 있음 - 모든 사원 수와 급여의 총합
 
 # avg() - 숫자 컬럼의 평균
 
-select count(*), sum(sal), trunc(avg(sal)) from emp;
+select count(*), sum(sal), trunc(avg(sal)) from emp;	// 급여의 평균(소수점 버림)
 
-// 급여 평균보다 많이 받는 사원을 검색
+// 급여를 평균 급여보다 많이 받는 사원을 검색
 select * from emp where sal > avg(sal);
-select trunc(avg(sal)) from emp;
+select trunc(avg(sal)) from emp;	
 
 
 평균값이 여러 개 나온다면 비교해서 사용할 수 없음
 
 # max() - 최대값
-
-
 # min() - 최소값
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+select count(*)m sum(sal), trunc(avg(sal)), max(sal), min(sal) from emp;
