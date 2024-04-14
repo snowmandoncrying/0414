@@ -3,6 +3,7 @@
   컬럼명 (컬럼)
   로우
 
+
 @ 데이터의 구조를 살펴보기 위한 DESC
   
   DESC(RIBE) - 테이블명
@@ -15,10 +16,18 @@
   DEPTNO(부서번호), DNAME(부서명), LOC(지역)
 
 
+@ 오라클의 데이터형
 
+# NUMBER 데이터형
+NUMBER(precision, scale)
 
+12345 > NUMBER 12345
+123456.78 > NUMBER(8,2) - 8자리, 소수점 두자리
 
+# VARCHAR2 데이터형
 
+sql > VARCHAR(20) - 칸에 딱 맞게
+sql > CHAR(8) - 8칸 중 3칸만 차지하고 나머지는 공백
 
 
 
